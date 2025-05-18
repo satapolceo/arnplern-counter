@@ -12,7 +12,7 @@
     }
     body {
       font-family: 'Kanit', sans-serif;
-      background: #fff;
+      background: #fffbe8;
       height: 100vh;
       width: 100vw;
       min-height: 100vh;
@@ -26,10 +26,10 @@
     .counter-box {
       width: 100vw;
       height: 100vh;
-      background: #f4f7e6;
-      box-shadow: 0 4px 12px rgba(80,180,80,0.07);
-      font-size: 2.1em;
-      color: #256029;
+      background: #fffbe8;
+      box-shadow: 0 4px 12px rgba(160, 120, 40, 0.04);
+      font-size: 2em;
+      color: #5c4300;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -41,30 +41,40 @@
     .number {
       font-size: 3.3em;
       font-weight: bold;
-      color: #31a24c;
-      margin: 12px 8px;
-      animation: blink 1s infinite alternate;
+      color: #d2a133;
+      margin: 12px 8px 8px 8px;
       letter-spacing: 2px;
+      animation: numberpop 0.8s;
+      text-shadow: 0 2px 8px rgba(120,80,10,0.08);
     }
-    @keyframes blink {
-      0% { color: #31a24c; }
-      100% { color: #a4e38b; }
+    @keyframes numberpop {
+      0% { transform: scale(1.1);}
+      100% { transform: scale(1);}
     }
-    .sprout {
-      font-size: 1.5em;
-      margin-bottom: 12px;
+    .text-main {
+      font-size: 1.15em;
+      color: #5c4300;
+      margin-bottom: 0.6em;
+    }
+    .text-sub {
+      font-size: 1em;
+      color: #b6a481;
+      margin-top: 0.3em;
     }
   </style>
 </head>
 <body>
   <div class="counter-box">
-    <div class="sprout">🌱</div>
-    <div>
+    <div class="text-main">
       วันนี้คุณช่วยให้
-      <span class="number" id="readerCount">0</span>
+    </div>
+    <div class="number" id="readerCount">0</div>
+    <div class="text-main">
       คน ได้อ่านฟรีแล้ว!
     </div>
-    <div class="sprout" style="margin-top:16px;">🌱</div>
+    <div class="text-sub">
+      “อ่านของคุณ = อนาคตใหม่ของใครอีกคน”
+    </div>
   </div>
 
   <script>
@@ -81,12 +91,4 @@
       const current = Math.floor(progress * (end - start) + start);
       obj.textContent = current.toLocaleString('en-US');
       if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        obj.textContent = end.toLocaleString('en-US');
-      }
-    }
-    window.requestAnimationFrame(step);
-  </script>
-</body>
-</
+        window.requestAnimationFrame(step
