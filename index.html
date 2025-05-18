@@ -78,7 +78,6 @@
   </div>
 
   <script>
-    // ตั้งค่าตัวเลขเป้าหมาย
     const start = 0;
     const end = 289; // ตัวเลขที่ต้องการ
     const duration = 1800; // มิลลิวินาที (1.8 วินาที)
@@ -91,4 +90,12 @@
       const current = Math.floor(progress * (end - start) + start);
       obj.textContent = current.toLocaleString('en-US');
       if (progress < 1) {
-        window.requestAnimationFrame(step
+        window.requestAnimationFrame(step);
+      } else {
+        obj.textContent = end.toLocaleString('en-US');
+      }
+    }
+    window.requestAnimationFrame(step);
+  </script>
+</body>
+</html>
