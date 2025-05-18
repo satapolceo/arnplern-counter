@@ -78,24 +78,17 @@
   </div>
 
   <script>
-    const start = 0;
-    const end = 289; // ตัวเลขที่ต้องการ
-    const duration = 1800; // มิลลิวินาที (1.8 วินาที)
-    const obj = document.getElementById("readerCount");
+    // ดึงค่าจาก Google Apps Script
+    const url = 'https://script.google.com/macros/s/AKfycbyfDzQn1VqtIpQY-MVbRjS3ay3w1_AMmOcDwccs0FmnTEW2JjDYiMnKJ6DUNRgqUuQQ/exec';
 
-    let startTimestamp = null;
-    function step(timestamp) {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      const current = Math.floor(progress * (end - start) + start);
-      obj.textContent = current.toLocaleString('en-US');
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        obj.textContent = end.toLocaleString('en-US');
-      }
-    }
-    window.requestAnimationFrame(step);
+    fetch(url)
+      .then(response => response.text())
+      .then(number => {
+        document.getElementById('readerCount').textContent = number;
+      })
+      .catch(error => {
+        document.getElementById('readerCount').textContent = '-';
+      });
   </script>
 </body>
 </html>
