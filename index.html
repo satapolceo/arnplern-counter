@@ -4,50 +4,74 @@
   <meta charset="UTF-8">
   <title>Animated Reader Counter</title>
   <style>
-    body {
-      text-align: center;
-      font-family: 'Kanit', sans-serif;
-      background: #fff;
+    html, body {
+      height: 100%;
+      width: 100%;
       margin: 0;
       padding: 0;
     }
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: #fff;
+      height: 100vh;
+      width: 100vw;
+      min-height: 100vh;
+      min-width: 100vw;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .counter-box {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 20px 40px;
-      border-radius: 20px;
+      width: 100vw;
+      height: 100vh;
       background: #f4f7e6;
       box-shadow: 0 4px 12px rgba(80,180,80,0.07);
-      font-size: 1.5em;
+      font-size: 2.1em;
       color: #256029;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0;
+      margin: 0;
+      padding: 0;
     }
     .number {
-      font-size: 2.8em;
+      font-size: 3.3em;
       font-weight: bold;
       color: #31a24c;
-      margin: 0 8px;
+      margin: 12px 8px;
       animation: blink 1s infinite alternate;
+      letter-spacing: 2px;
     }
     @keyframes blink {
       0% { color: #31a24c; }
       100% { color: #a4e38b; }
     }
+    .sprout {
+      font-size: 1.5em;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
   <div class="counter-box">
-    <span style="font-size:1.4em;">🌱</span>
-    วันนี้คุณช่วยให้
-    <span class="number" id="readerCount">0</span>
-    คน ได้อ่านฟรีแล้ว!
-    <span style="font-size:1.4em;">🌱</span>
+    <div class="sprout">🌱</div>
+    <div>
+      วันนี้คุณช่วยให้
+      <span class="number" id="readerCount">0</span>
+      คน ได้อ่านฟรีแล้ว!
+    </div>
+    <div class="sprout" style="margin-top:16px;">🌱</div>
   </div>
 
   <script>
-    // เริ่มต้น, เป้าหมาย, ความเร็ว
+    // ตั้งค่าตัวเลขเป้าหมาย
     const start = 0;
-    const end = 4286; // เปลี่ยนเป็นตัวเลขล่าสุด
-    const duration = 2200; // มิลลิวินาที (2.2 วินาที)
+    const end = 289; // ตัวเลขที่ต้องการ
+    const duration = 1800; // มิลลิวินาที (1.8 วินาที)
     const obj = document.getElementById("readerCount");
 
     let startTimestamp = null;
@@ -65,4 +89,4 @@
     window.requestAnimationFrame(step);
   </script>
 </body>
-</html>
+</
