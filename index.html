@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Animated Reader Counter</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Kanit', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .counter-box {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 20px 40px;
+      border-radius: 20px;
+      background: #f4f7e6;
+      box-shadow: 0 4px 12px rgba(80,180,80,0.07);
+      font-size: 1.5em;
+      color: #256029;
+    }
+    .number {
+      font-size: 2.8em;
+      font-weight: bold;
+      color: #31a24c;
+      margin: 0 8px;
+      animation: blink 1s infinite alternate;
+    }
+    @keyframes blink {
+      0% { color: #31a24c; }
+      100% { color: #a4e38b; }
+    }
+  </style>
+</head>
+<body>
+  <div class="counter-box">
+    <span style="font-size:1.4em;">🌱</span>
+    วันนี้คุณช่วยให้
+    <span class="number" id="readerCount">0</span>
+    คน ได้อ่านฟรีแล้ว!
+    <span style="font-size:1.4em;">🌱</span>
+  </div>
+
+  <script>
+    // เริ่มต้น, เป้าหมาย, ความเร็ว
+    const start = 0;
+    const end = 4286; // เปลี่ยนเป็นตัวเลขล่าสุด
+    const duration = 2200; // มิลลิวินาที (2.2 วินาที)
+    const obj = document.getElementById("readerCount");
+
+    let startTimestamp = null;
+    function step(timestamp) {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const current = Math.floor(progress * (end - start) + start);
+      obj.textContent = current.toLocaleString('en-US');
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        obj.textContent = end.toLocaleString('en-US');
+      }
+    }
+    window.requestAnimationFrame(step);
+  </script>
+</body>
+</html>
